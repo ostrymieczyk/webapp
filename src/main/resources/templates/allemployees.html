@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>University Enrollments</title>
+
+	<style>
+		tr:first-child{
+			font-weight: bold;
+			background-color: #C6C9C4;
+		}
+	</style>
+
+</head>
+
+
+<body>
+	<h2>List of Employees</h2>	
+	<table>
+		<tr>
+			<td>NAME</td><td>Joining Date</td><td>Salary</td><td>SSN</td><td></td>
+		</tr>
+		<tr th:each="employee : ${employees}">
+	      <td th:text="${employee.name}"/>
+	      <td th:text="${employee.joiningDate}"/>
+	      <td th:text="${employee.salary}"/>
+	      <td><a th:href="@{/edit-${employee.ssn}-employee}" th:text="${employee.ssn}"></a></td>
+		  <td><a th:href="@{/delete-{snn}-employee(snn=${employee.ssn})}">delete</a></td>
+	    </tr>
+	</table>
+	<br/>
+	<a th:href="@{/new}">Add New Employee</a>
+</body>
+</html>
